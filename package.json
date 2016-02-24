@@ -1,0 +1,21 @@
+{
+  "name": "prueba",
+  "version": "0.1.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cool-ascii-faces": "^1.3.3",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u001b[A\u001b[B"
+  },
+  "author": "Alberto",
+  "license": "ISC"
+}
