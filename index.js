@@ -6,11 +6,25 @@
 //Cargar el módulo
 var express=require("express");
 var fs=require("fs");
-var contacts=[];
+var members=[];
 var app=express();
 
 app.get("/about/spain-births",(req,res)=>{
-	res.send('<html><body>It will display data from spanish births, by regions and years,</ br> making difference between men and women, showing in the last column the total number.</html></body>');
+	res.send('<html><body>It will display data from spanish births, by regions and years,</ br> making difference between men and women, showing the total number in the last column.</html></body>');
+});
+
+app.get('/about',(req,res) => {
+	fs.readFile('members.json','utf8',(err,content) => {
+		console.log("Data read");
+		members=JSON.parse(content);
+		res.write("<html><body>Group members:<ul>");
+
+		members.forEach((member) =>{
+			res.write("<li>"+member.name+" =>"+member.source+"</li>");
+		});
+		res.write("</ul>---------------</body></html>");
+		res.end();
+	});
 });
 app.listen(process.env.PORT);
 
