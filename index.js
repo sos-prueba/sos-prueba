@@ -10,7 +10,7 @@ var members=[];
 var app=express();
 
 app.get("/about/spain-births",(req,res)=>{
-	res.send('<html><body>It will display data from spanish births, by regions and years,</ br> making difference between men and women, showing the total number in the last column.</html></body>');
+	res.send('<html><body>It will display data from spanish births, by regions and years,<br /> making difference between men and women, showing the total number in the last column.</html></body>');
 });
 
 app.get('/about',(req,res) => {
@@ -22,7 +22,7 @@ app.get('/about',(req,res) => {
 		members.forEach((member) =>{
 			res.write("<li>"+member.name+" =>"+member.source+"</li>");
 		});
-		res.write("</ul>---------------</body></html>");
+		res.write("</ul>Our sources of information are aimed for analyzing the relationship between the number of births<br />over the years in the regions of Spain, along with the number of deaths<br /> due to different types of disease and population growth in our country .</body></html>");
 		res.end();
 	});
 });
