@@ -10,7 +10,7 @@ var contacts=[];
 var app=express();
 
 
-app.get("/",(req,res) => {
+app.get("/about/alberto",(req,res) => {
 	fs.readFile('contacts.json','utf8',(err,content) => {
 		console.log("Data read");
 		contacts=JSON.parse(content);

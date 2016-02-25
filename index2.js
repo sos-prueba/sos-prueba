@@ -1,7 +1,7 @@
 ﻿//cabecera
 //cada contacto en una línea
 //pie
-/*var express=require("express");
+var express=require("express");
 var fs=require("fs");
 var contacts=[];
 var app=express();
@@ -20,4 +20,4 @@ app.get('/about',(req,res) => {
 		res.end();
 	});
 });
-app.listen(11000);*/
+app.listen(process.env.PORT);*/
