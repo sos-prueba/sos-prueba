@@ -28,7 +28,7 @@ app.get("/about",(req,res)=>{
 	console.log("Hola");
 	res.send('Hello from A');
 });
-app.listen(process.end.PORT);
+app.listen(process.env.PORT);
 
 //Leer de forma síncrona
 //var data=fs.readFileSync('contacts.json','utf8');
