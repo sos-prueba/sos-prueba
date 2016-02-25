@@ -10,7 +10,7 @@ var contacts=[];
 var app=express();
 
 
-app.get('/',(req,res) => {
+app.get("/",(req,res) => {
 	fs.readFile('contacts.json','utf8',(err,content) => {
 		console.log("Data read");
 		contacts=JSON.parse(content);
@@ -28,7 +28,7 @@ app.get("/about",(req,res)=>{
 	console.log("Hola");
 	res.send('Hello from A');
 });
-app.listen(11000);
+app.listen(process.end.PORT);
 
 //Leer de forma síncrona
 //var data=fs.readFileSync('contacts.json','utf8');
