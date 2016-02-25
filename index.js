@@ -9,24 +9,8 @@ var fs=require("fs");
 var contacts=[];
 var app=express();
 
-
-app.get("/about/alberto",(req,res) => {
-	fs.readFile('contacts.json','utf8',(err,content) => {
-		console.log("Data read");
-		contacts=JSON.parse(content);
-		res.write("<html><body>Contacts:<ul>");
-
-		contacts.forEach((contact) =>{
-			res.write("<li>"+contact.name+" ("+contact.phone+")</li>");
-		});
-		res.write("</ul>---------------</body></html>");
-		res.end();
-	});
-});
-
-app.get("/about",(req,res)=>{
-	console.log("Hola");
-	res.send('Hello from A');
+app.get("/about/spain-births",(req,res)=>{
+	res.send('<html><body>It will display data from spanish births, by regions and years,</ br> making difference between men and women, showing in the last column the total number.</html></body>');
 });
 app.listen(process.env.PORT);
 
