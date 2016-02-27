@@ -10,7 +10,18 @@ var members=[];
 var app=express();
 
 app.get("/about/spain-births",(req,res)=>{
-	res.send('<html><body>It will display data from spanish births, by regions and years,<br /> making difference between men and women, showing the total number in the last column.</html></body>');
+	fs.readFile('spain-births.json','utf8',(err,content)=>{
+		console.log("Data read");
+		births=JSON.parse(content);
+		res.write('<html><body>It will display data from spanish births, by regions and years,<br /> making difference between men and women, showing the total number in the last column.</html></body>');
+		res.write("<html><body>Data:<ul>");
+		res.write("<li>region, year => men, women, total birth")
+		births.forEach((birth)=>{
+			res.write("<li>"+birth.region+", "+birth.year+" =>"+birth.men+", "+birth.women+", "+birth.total-birth+"</li>");
+		});
+		res.end();
+	});
+	
 });
 
 app.get('/about',(req,res) => {
