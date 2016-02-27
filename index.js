@@ -17,7 +17,7 @@ app.get("/about/spain-births",(req,res)=>{
 		res.write("Data:<ul>");
 		res.write("<li>region, year => men, women, total birth</li>")
 		births.forEach((birth) =>{
-			res.write("<li>"+birth.region+", "+birth.year+" =>"+birth.men+", "+birth.women+", "+birth.totalbirth+"</li>");
+			res.write("<li>"+birth.region+", "+birth.year+" => "+birth.men+", "+birth.women+", "+birth.totalbirth+"</li>");
 		});
 		res.write("</body></html>");
 		res.end();
