@@ -19,8 +19,8 @@ app.get("/about/spain-births",(req,res)=>{
 	
 });
 
-app.get("/about/population-growth",(req,res)=>{
-	fs.readFile('population-growth.json','utf-8',(err,content)=>{
+app.get("/about/population-growth",(req,res) =>{
+	fs.readFile('population-growth.json','utf-8',(err,content) =>{
 		console.log("Data read");
 		pops=JSON.parse(content);
 		res.write('<html><h2>Population growth</h2>');
@@ -49,7 +49,7 @@ app.get("/about/mort-sickness",(req,res) =>{
 		res.write('<html><h1>Mort sickness</h1>');
 		res.write('<body>My data source is about mortality sexually transmited disease');
 		sic.forEach((sickness) =>{
-			res.write(" - ", + sickness.region + "  " + sickness.sickness + "  " + sickness.year + "  " + sickness.mortalityinmen  + "  " + sickness.mortalityinwomen + "  " + sickness.totalmortality);
+			res.write(" - ", + sickness.region + "  " + sickness.sickness + "  " + sickness.year + "  " + sickness.mortalityinmen  + "  " + sickness.mortalityinwomen + "  " + sickness.totalmortality+ " ");
 		});
 		res.write("</body></html>");
 		res.end();
