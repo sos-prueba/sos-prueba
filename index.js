@@ -6,8 +6,8 @@ app.get("/about/spain-births",(req,res)=>{
 	fs.readFile('spain-births.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		births=JSON.parse(content);
-		res.write('<html><body><h3>Spanish births </h3><br />');
-		res.write('It will display data about spanish births, by regions and years. <br />Making difference between men and women, showing the total number of births in the last column, as following: <br />');		
+		res.write('<html><body><h3>Spanish births </h3>');
+		res.write("<p style='text-align: justify;'>It will display data about spanish births, by regions and years. Making difference between men and women, showing the total number of births in the last column, as following: </p>");		
 		res.write("Data example:<ul>");
 		res.write("<li>region, year => men, women, total birth</li>")
 		births.forEach((birth) =>{
@@ -19,8 +19,8 @@ app.get("/about/spain-births",(req,res)=>{
 	
 });
 
-app.get("/about/population-growth",(req,res) =>{
-	fs.readFile('population-growth.json','utf-8',(err,content) =>{
+app.get("/about/population-growth",(req,res)=>{
+	fs.readFile('population-growth.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		pops=JSON.parse(content);
 		res.write('<html><h2>Population growth</h2>');
@@ -42,14 +42,16 @@ app.get("/about/population-growth",(req,res) =>{
 	
 });
 
-app.get("/about/mort-sickness",(req,res) =>{
-	fs.readFile('mort-sickness.json', 'utf-8', (err, content) =>{
+app.get("/about/mort-sickness",(req,res)=>{
+	fs.readFile('mort-sickness.json', 'utf8', (err, content)=>{
 		console.log("This is my data source");
 		sic = JSON.parse(content);
 		res.write('<html><h1>Mort sickness</h1>');
-		res.write('<body>My data source is about mortality sexually transmited disease');
-		sic.forEach((sickness) =>{
-			res.write(" - " + sickness.region + "  " + sickness.sickness + "  " + sickness.year + "  " + sickness.mortalityinmen  + "  " + sickness.mortalityinwomen + "  " + sickness.totalmortality+ " ");
+		res.write('<body>My data source is about mortality sexually transmited disease. For example:</br>');
+		res.write("<li>region, year, mortality-in-men, mortality-in-women, total-mortality</li>")
+		sic.forEach((sick) =>{
+			res.write("<li>" + sick.region + " " +sick.sickness + " " + sick.year + " " + sick.mortalityinmen  + " " + sick.mortalityinwomen + " "
+				  + sick.totalmortality + "</li>");
 		});
 		res.write("</body></html>");
 		res.end();
@@ -60,14 +62,15 @@ app.get('/about',(req,res) => {
 	fs.readFile('members.json','utf-8',(err,content) => {
 		console.log("Data read");
 		members=JSON.parse(content);
-		res.write("<html><body>Group members:<ul>");
+		res.write("<html><body><h3>Group members:</h3><ul>");
 
 		members.forEach((member) =>{
 			res.write("<li>"+member.name+" => <a href=https://sos-2016-03.herokuapp.com/about/"+member.source+">"+member.source+"</a></li>");
 		});
-		res.write("</ul>Our sources of information are aimed for analyzing the relationship between the number of births<br />over the years in the regions of Spain, along with the number of deaths<br /> due to different types of disease and population growth in our country .</body></html>");
+		res.write("</ul><h3>Project theme:</h3>");
+		res.write("<p style='text-align: justify;'>Our sources of information are aimed for analyzing the relationship between the number of births over the years in the regions of Spain, along with the number of deaths due to different types of disease and population growth in our country.</p></body></html>");
 		res.end();
 	});
 });
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 11000);
 
